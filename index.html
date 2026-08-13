@@ -2,8 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surtos & mais Company - Roleta Lateral</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Surtos & mais Company - Roleta Mobile</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,6 +15,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            overflow: hidden; /* Evita que a tela pule no celular */
         }
 
         h1, .p {
@@ -26,11 +27,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 120px;
+            gap: 80px;
             margin-top: 30px;
         }
 
-        /* Inputs */
+        /* Inputs (Lado Esquerdo) */
         .container-inputs {
             width: 250px;
             display: flex;
@@ -52,38 +53,41 @@
             cursor: pointer;
         }
 
-        /* Paleta Direita */
+        /* Paleta Circular (Lado Direito) */
         .paleta-wrapper {
             position: relative;
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: grab;
+            touch-action: none; /* Fundamental para o celular não bugar o gesto */
         }
 
         .paleta-wrapper:active {
             cursor: grabbing;
         }
 
-        /* O Centro Fixo (Apenas círculo branco/neutro sem ícone) */
+        /* O Centro Fixo (Branco e limpo) */
         .central-tunnel {
             position: absolute;
-            width: 65px;
-            height: 65px;
+            width: 70px;
+            height: 70px;
             background-color: #ffffff;
             border-radius: 50%;
             border: 3px solid rgba(255, 255, 255, 0.4);
             z-index: 10;
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            pointer-events: none; /* Garante que o toque passe direto para a roleta */
         }
 
-        /* Anel giratório */
+        /* Anel giratório completo */
         .color-ring {
             position: absolute;
             width: 100%;
             height: 100%;
+            will-change: transform;
         }
 
         /* Círculos de Cores */
@@ -95,12 +99,6 @@
             border: 2px solid rgba(255, 255, 255, 0.2);
             cursor: pointer;
             z-index: 5;
-            transition: border-color 0.2s, opacity 0.2s;
-        }
-
-        .color-item:hover {
-            border-color: #fff;
-            transform: scale(1.15);
         }
     </style>
 </head>
@@ -125,26 +123,26 @@
             <div class="central-tunnel"></div>
             
             <div class="color-ring" id="colorRing">
-                <div class="color-item" style="background: #ff4757;"></div>
-                <div class="color-item" style="background: #ff6b81;"></div>
-                <div class="color-item" style="background: #ffa502;"></div>
-                <div class="color-item" style="background: #ff7f50;"></div>
-                <div class="color-item" style="background: #eccc68;"></div>
-                <div class="color-item" style="background: #2ed573;"></div>
-                <div class="color-item" style="background: #7bed9f;"></div>
-                <div class="color-item" style="background: #00d2d3;"></div>
-                <div class="color-item" style="background: #01a3a4;"></div>
-                <div class="color-item" style="background: #1e90ff;"></div>
-                <div class="color-item" style="background: #70a1ff;"></div>
-                <div class="color-item" style="background: #5352ed;"></div>
-                <div class="color-item" style="background: #3742fa;"></div>
-                <div class="color-item" style="background: #9b59b6;"></div>
-                <div class="color-item" style="background: #ff47a3;"></div>
-                <div class="color-item" style="background: #dfe4ea;"></div>
-                <div class="color-item" style="background: #2f3542;"></div>
-                <div class="color-item" style="background: #747d8c;"></div>
-                <div class="color-item" style="background: #ffa502;"></div>
-                <div class="color-item" style="background: #ced6e0;"></div>
+                <div class="color-item" style="background: #ff4757;" data-color="#ff4757"></div>
+                <div class="color-item" style="background: #ff6b81;" data-color="#ff6b81"></div>
+                <div class="color-item" style="background: #ffa502;" data-color="#ffa502"></div>
+                <div class="color-item" style="background: #ff7f50;" data-color="#ff7f50"></div>
+                <div class="color-item" style="background: #eccc68;" data-color="#eccc68"></div>
+                <div class="color-item" style="background: #2ed573;" data-color="#2ed573"></div>
+                <div class="color-item" style="background: #7bed9f;" data-color="#7bed9f"></div>
+                <div class="color-item" style="background: #00d2d3;" data-color="#00d2d3"></div>
+                <div class="color-item" style="background: #01a3a4;" data-color="#01a3a4"></div>
+                <div class="color-item" style="background: #1e90ff;" data-color="#1e90ff"></div>
+                <div class="color-item" style="background: #70a1ff;" data-color="#70a1ff"></div>
+                <div class="color-item" style="background: #5352ed;" data-color="#5352ed"></div>
+                <div class="color-item" style="background: #3742fa;" data-color="#3742fa"></div>
+                <div class="color-item" style="background: #9b59b6;" data-color="#9b59b6"></div>
+                <div class="color-item" style="background: #ff47a3;" data-color="#ff47a3"></div>
+                <div class="color-item" style="background: #dfe4ea;" data-color="#dfe4ea"></div>
+                <div class="color-item" style="background: #2f3542;" data-color="#2f3542"></div>
+                <div class="color-item" style="background: #747d8c;" data-color="#747d8c"></div>
+                <div class="color-item" style="background: #ffa502;" data-color="#ffa502"></div>
+                <div class="color-item" style="background: #ced6e0;" data-color="#ced6e0"></div>
             </div>
         </div>
     </div>
@@ -154,10 +152,10 @@
         const colorRing = document.getElementById('colorRing');
         const paletaWrapper = document.getElementById('paletaWrapper');
         
-        const radius = 100;
+        const radius = 60;
         const totalItems = items.length;
 
-        // Distribui as 20 cores em círculo completo
+        // Distribui as 20 cores em círculo
         items.forEach((item, index) => {
             const angle = (index * 2 * Math.PI) / totalItems;
             const x = Math.cos(angle) * radius - 13;
@@ -168,56 +166,52 @@
             item.style.transform = `translate(${x}px, ${y}px)`;
         });
 
-        // Função ajustada para ocultar as cores do lado direito e mostrar as do lado esquerdo (virado para os inputs)
-        function updateVisibility() {
-            let normalizedRotation = currentRotation % 360;
-            if (normalizedRotation < 0) normalizedRotation += 360;
-
-            items.forEach((item, index) => {
-                const itemAngle = (index * (360 / totalItems) + normalizedRotation) % 360;
-                
-                // Oculta as cores que passam pelo lado direito (entre -80° e 80° aprox.), deixando visíveis as do lado esquerdo
-                if (itemAngle > 280 || itemAngle < 80) {
-                    item.style.opacity = '0';
-                    item.style.pointerEvents = 'none';
-                } else {
-                    item.style.opacity = '1';
-                    item.style.pointerEvents = 'auto';
-                }
-            });
-        }
-
         let currentRotation = 0;
-        let isDragging = false;
+        let isInteracting = false;
         let startX = 0;
 
-        paletaWrapper.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX;
-        });
+        // Início da interação (Mouse ou Toque)
+        function handleStart(clientX) {
+            isInteracting = true;
+            startX = clientX;
+        }
 
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const deltaX = e.clientX - startX;
-            currentRotation += deltaX * 0.5;
-            startX = e.clientX;
-            
+        // Movimento (Mouse ou Toque)
+        function handleMove(clientX) {
+            if (!isInteracting) return;
+            const deltaX = clientX - startX;
+            currentRotation += deltaX * 0.6; // Sensibilidade de giro
+            startX = clientX;
             colorRing.style.transform = `rotate(${currentRotation}deg)`;
-            updateVisibility();
-        });
+        }
 
-        window.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
+        function handleEnd() {
+            isInteracting = false;
+        }
 
+        // Eventos para Computador (Mouse)
+        paletaWrapper.addEventListener('mousedown', (e) => handleStart(e.clientX));
+        window.addEventListener('mousemove', (e) => handleMove(e.clientX));
+        window.addEventListener('mouseup', handleEnd);
+
+        // Eventos corrigidos para Celular (Touch)
+        paletaWrapper.addEventListener('touchstart', (e) => {
+            handleStart(e.touches[0].clientX);
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (e) => {
+            if (!isInteracting) return;
+            handleMove(e.touches[0].clientX);
+        }, { passive: true });
+
+        window.addEventListener('touchend', handleEnd);
+
+        // Suporte a scroll/roda do mouse
         paletaWrapper.addEventListener('wheel', (e) => {
             e.preventDefault();
             currentRotation += e.deltaY * 0.2;
             colorRing.style.transform = `rotate(${currentRotation}deg)`;
-            updateVisibility();
         }, { passive: false });
-
-        updateVisibility();
     </script>
 
 </body>

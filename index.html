@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surtos & mais Company - Roleta Lateral</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1, .p {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .main-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 120px;
+            margin-top: 30px;
+        }
+
+        /* Inputs */
+        .container-inputs {
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .container-inputs input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #333;
+            color: white;
+        }
+
+        .container-inputs button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        /* Paleta Direita */
+        .paleta-wrapper {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: grab;
+        }
+
+        .paleta-wrapper:active {
+            cursor: grabbing;
+        }
+
+        /* O Centro Fixo (Apenas círculo branco/neutro sem ícone) */
+        .central-tunnel {
+            position: absolute;
+            width: 65px;
+            height: 65px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        /* Anel giratório */
+        .color-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Círculos de Cores */
+        .color-item {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            z-index: 5;
+            transition: border-color 0.2s, opacity 0.2s;
+        }
+
+        .color-item:hover {
+            border-color: #fff;
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Surtos & mais Company</h1>
+    <p class="p">Nos temos o objetivo de documentar seus surtos mentais.</p>
+    
+    <div class="main-wrapper">
+        <div class="container-inputs">
+            <div class="situacao">
+                <input placeholder="Descreva a situação..." type="text" minlength="10" maxlength="40">
+                <button onclick="nextStepSituation()">next</button>
+            </div>
+            <div class="pensamento">
+                <input placeholder="Descreva o pensamento..." type="text" minlength="10" maxlength="40">
+                <button onclick="nextStepThought()">next</button>
+            </div>
+        </div>
+
+        <div class="paleta-wrapper" id="paletaWrapper">
+            <div class="central-tunnel"></div>
+            
+            <div class="color-ring" id="colorRing">
+                <div class="color-item" style="background: #ff4757;"></div>
+                <div class="color-item" style="background: #ff6b81;"></div>
+                <div class="color-item" style="background: #ffa502;"></div>
+                <div class="color-item" style="background: #ff7f50;"></div>
+                <div class="color-item" style="background: #eccc68;"></div>
+                <div class="color-item" style="background: #2ed573;"></div>
+                <div class="color-item" style="background: #7bed9f;"></div>
+                <div class="color-item" style="background: #00d2d3;"></div>
+                <div class="color-item" style="background: #01a3a4;"></div>
+                <div class="color-item" style="background: #1e90ff;"></div>
+                <div class="color-item" style="background: #70a1ff;"></div>
+                <div class="color-item" style="background: #5352ed;"></div>
+                <div class="color-item" style="background: #3742fa;"></div>
+                <div class="color-item" style="background: #9b59b6;"></div>
+                <div class="color-item" style="background: #ff47a3;"></div>
+                <div class="color-item" style="background: #dfe4ea;"></div>
+                <div class="color-item" style="background: #2f3542;"></div>
+                <div class="color-item" style="background: #747d8c;"></div>
+                <div class="color-item" style="background: #ffa502;"></div>
+                <div class="color-item" style="background: #ced6e0;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const items = document.querySelectorAll('.color-item');
+        const colorRing = document.getElementById('colorRing');
+        const paletaWrapper = document.getElementById('paletaWrapper');
+        
+        const radius = 100;
+        const totalItems = items.length;
+
+        // Distribui as 20 cores em círculo completo
+        items.forEach((item, index) => {
+            const angle = (index * 2 * Math.PI) / totalItems;
+            const x = Math.cos(angle) * radius - 13;
+            const y = Math.sin(angle) * radius - 13;
+
+            item.style.left = `50%`;
+            item.style.top = `50%`;
+            item.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Função ajustada para ocultar as cores do lado direito e mostrar as do lado esquerdo (virado para os inputs)
+        function updateVisibility() {
+            let normalizedRotation = currentRotation % 360;
+            if (normalizedRotation < 0) normalizedRotation += 360;
+
+            items.forEach((item, index) => {
+                const itemAngle = (index * (360 / totalItems) + normalizedRotation) % 360;
+                
+                // Oculta as cores que passam pelo lado direito (entre -80° e 80° aprox.), deixando visíveis as do lado esquerdo
+                if (itemAngle > 280 || itemAngle < 80) {
+                    item.style.opacity = '0';
+                    item.style.pointerEvents = 'none';
+                } else {
+                    item.style.opacity = '1';
+                    item.style.pointerEvents = 'auto';
+                }
+            });
+        }
+
+        let currentRotation = 0;
+        let isDragging = false;
+        let startX = 0;
+
+        paletaWrapper.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const deltaX = e.clientX - startX;
+            currentRotation += deltaX * 0.5;
+            startX = e.clientX;
+            
+            colorRing.style.transform = `rotate(${currentRotation}deg)`;
+            updateVisibility();
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        paletaWrapper.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            currentRotation += e.deltaY * 0.2;
+            colorRing.style.transform = `rotate(${currentRotation}deg)`;
+            updateVisibility();
+        }, { passive: false });
+
+        updateVisibility();
+    </script>
+
+</body>
+</html>

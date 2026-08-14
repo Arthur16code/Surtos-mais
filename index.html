@@ -1,218 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Surtos & mais Company - Roleta Mobile</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            color: #fff;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            overflow: hidden; /* Evita que a tela pule no celular */
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surtos & mais Company - Roleta Lateral</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        h1, .p {
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .main-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 80px;
-            margin-top: 30px;
-        }
-
-        /* Inputs (Lado Esquerdo) */
-        .container-inputs {
-            width: 250px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .container-inputs input {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            background: #333;
-            color: white;
-        }
-
-        .container-inputs button {
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        /* Paleta Circular (Lado Direito) */
-        .paleta-wrapper {
-            position: relative;
-            width: 160px;
-            height: 160px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: grab;
-            touch-action: none; /* Fundamental para o celular não bugar o gesto */
-        }
-
-        .paleta-wrapper:active {
-            cursor: grabbing;
-        }
-
-        /* O Centro Fixo (Branco e limpo) */
-        .central-tunnel {
-            position: absolute;
-            width: 70px;
-            height: 70px;
-            background-color: #ffffff;
-            border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.4);
-            z-index: 10;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            pointer-events: none; /* Garante que o toque passe direto para a roleta */
-        }
-
-        /* Anel giratório completo */
-        .color-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            will-change: transform;
-        }
-
-        /* Círculos de Cores */
-        .color-item {
-            position: absolute;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            z-index: 5;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <h1>Surtos & mais Company</h1>
     <p class="p">Nos temos o objetivo de documentar seus surtos mentais.</p>
-    
-    <div class="main-wrapper">
+
+    <div class="container">
+        <!-- BLOCO DOS INPUTS -->
         <div class="container-inputs">
             <div class="situacao">
-                <input placeholder="Descreva a situação..." type="text" minlength="10" maxlength="40">
-                <button onclick="nextStepSituation()">next</button>
+                <input placeholder="O que rolou" type="text" minlength="10" maxlength="40">
+                <button onclick="nextStepSituation()"><span class="material-icons">arrow_forward</span></button>
             </div>
-            <div class="pensamento">
-                <input placeholder="Descreva o pensamento..." type="text" minlength="10" maxlength="40">
-                <button onclick="nextStepThought()">next</button>
+
+            <div class="pensamento" style="display: none;">
+                <input placeholder="O que passou pela sua mente" type="text" minlength="10" maxlength="60">
+                <button onclick="backToSituation()"><span class="material-icons">arrow_back</span></button>
+                <button onclick="nextStepThought()"><span class="material-icons">arrow_forward</span></button>
+            </div>
+
+            <div class="saida" style="display: none;">
+                <input placeholder="O que voce fez" type="text" minlength="10" maxlength="60">
+                <button onclick="backToThought()"><span class="material-icons">arrow_back</span></button>
+                <button onclick="nextStepSaida()"><span class="material-icons">arrow_forward</span></button>
+            </div>
+            <div class="emocao" style="display: none;">
+                <p>Como você está se sentindo?</p>
+
+                <div class="carousel-container">
+                    <button class="left" onclick="prevSlide()"><span class="material-icons">chevron_left</span></button>
+                    <div>
+                        <div class="carousel-track" id="track">
+                            <div class="carousel-track" id="track">
+                                <span class="item material-icons" onclick="selectEmotion('sentiment_content')"><svg
+                                        xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960"
+                                        width="35px" fill="#000">
+                                        <path
+                                            d="M360-340h240v-60H360v60Zm-20-280q-32 0-59.5 18T235-556l50 33q10-15 24-25.5t31-10.5q17 0 31 10.5t24 24.5l50-33q-18-27-45.5-45T340-620Zm280 0q-32 0-59.5 18T515-556l50 33q10-14 24-24.5t31-10.5q17 0 31.5 10t23.5 25l50-33q-18-28-45.5-46T620-620ZM324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM480-480Zm227 227q93-93 93-227t-93-227q-93-93-227-93t-227 93q-93 93-93 227t93 227q93 93 227 93t227-93Z" />
+                                    </svg></span>
+                                <span class="item material-icons" onclick="selectEmotion('sentiment_dissatisfied')"><svg
+                                        xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960"
+                                        width="35px" fill="#000">
+                                        <path
+                                            d="M620-520q25 0 42.5-17.5T680-580q0-25-17.5-42.5T620-640q-25 0-42.5 17.5T560-580q0 25 17.5 42.5T620-520Zm-280 0q25 0 42.5-17.5T400-580q0-25-17.5-42.5T340-640q-25 0-42.5 17.5T280-580q0 25 17.5 42.5T340-520Zm16.5 138.5Q301-343 276-280h66q22-37 58.5-58.5T480-360q43 0 79.5 21.5T618-280h66q-25-63-80.5-101.5T480-420q-68 0-123.5 38.5Zm-32.5 270Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM480-480Zm227 227q93-93 93-227t-93-227q-93-93-227-93t-227 93q-93 93-93 227t93 227q93 93 227 93t227-93Z" />
+                                    </svg></span>
+                                <span class="item material-icons"
+                                    onclick="selectEmotion('sentiment_extremely_dissatisfied')"><svg
+                                        xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960"
+                                        width="35px" fill="#000">
+                                        <path
+                                            d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Zm60-364 20-12q2 24 19 40t41 16q25 0 42.5-17.5T680-540q0-15-7-28.5T654-590l26-15-20-35-140 80 20 36Zm-120 0 20-36-140-80-20 35 26 15q-12 8-19 21.5t-7 28.5q0 25 17.5 42.5T340-480q24 0 41-16t19-40l20 12Zm60 84q-71 0-125 45.5T279-280h402q-22-69-76-114.5T480-440Zm0-40Z" />
+                                    </svg></span>
+                                <span class="item material-icons" onclick="selectEmotion('sentiment_neutral')"><svg
+                                        xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960"
+                                        width="35px" fill="#000">
+                                        <path
+                                            d="M620-520q25 0 42.5-17.5T680-580q0-25-17.5-42.5T620-640q-25 0-42.5 17.5T560-580q0 25 17.5 42.5T620-520Zm-280 0q25 0 42.5-17.5T400-580q0-25-17.5-42.5T340-640q-25 0-42.5 17.5T280-580q0 25 17.5 42.5T340-520Zm20 180h240v-60H360v60Zm-36 228.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM480-480Zm227 227q93-93 93-227t-93-227q-93-93-227-93t-227 93q-93 93-93 227t93 227q93 93 227 93t227-93Z" />
+                                    </svg></span>
+                                <span class="item material-icons" onclick="selectEmotion('sentiment_satisfied')"><svg
+                                        xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960"
+                                        width="35px" fill="#000">
+                                        <path
+                                            d="M620-520q25 0 42.5-17.5T680-580q0-25-17.5-42.5T620-640q-25 0-42.5 17.5T560-580q0 25 17.5 42.5T620-520Zm-280 0q25 0 42.5-17.5T400-580q0-25-17.5-42.5T340-640q-25 0-42.5 17.5T280-580q0 25 17.5 42.5T340-520Zm263.5 221.5Q659-337 684-400h-66q-22 37-58.5 58.5T480-320q-43 0-79.5-21.5T342-400h-66q25 63 80.5 101.5T480-260q68 0 123.5-38.5ZM324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM480-480Zm227 227q93-93 93-227t-93-227q-93-93-227-93t-227 93q-93 93-93 227t93 227q93 93 227 93t227-93Z" />
+                                    </svg></span>
+                                <span class="item material-icons" onclick="selectEmotion('sentiment_stressed')"><svg
+                                        xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960"
+                                        width="35px" fill="#000">
+                                        <path
+                                            d="m298-456 143-104-143-104-36 48 77 56-77 56 36 48Zm364 0 36-48-77-56 77-56-36-48-143 104 143 104ZM420-278l60-60 60 60 60-60 39 39 42-42-81-81-60 60-60-60-60 60-60-60-81 81 42 42 39-39 60 60Zm-96 166.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM480-480Zm227 227q93-93 93-227t-93-227q-93-93-227-93t-227 93q-93 93-93 227t93 227q93 93 227 93t227-93Z" />
+                                    </svg></span>
+                                <span class="item material-icons"
+                                    onclick="selectEmotion('sentiment_very_dissatisfied')"><svg
+                                        xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960"
+                                        width="35px" fill="#000">
+                                        <path
+                                            d="M356.5-381.5Q301-343 276-280h408q-25-63-80.5-101.5T480-420q-68 0-123.5 38.5ZM312-480l44-42 42 42 42-42-42-42 42-44-42-42-42 42-44-42-42 42 42 44-42 42 42 42Zm250 0 42-42 44 42 42-42-42-42 42-44-42-42-44 42-42-42-42 42 42 44-42 42 42 42ZM324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM480-480Zm227 227q93-93 93-227t-93-227q-93-93-227-93t-227 93q-93 93-93 227t93 227q93 93 227 93t227-93Z" />
+                                    </svg></span>
+                                <span class="item material-icons"
+                                    onclick="selectEmotion('sentiment_very_satisfied')"><svg
+                                        xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960"
+                                        width="35px" fill="#000">
+                                        <path
+                                            d="M603.5-298.5Q659-337 684-400H276q25 63 80.5 101.5T480-260q68 0 123.5-38.5ZM312-520l44-42 42 42 42-42-84-86-86 86 42 42Zm250 0 42-42 44 42 42-42-86-86-84 86 42 42ZM324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM480-480Zm227 227q93-93 93-227t-93-227q-93-93-227-93t-227 93q-93 93-93 227t93 227q93 93 227 93t227-93Z" />
+                                    </svg></span>
+                                <span class="item material-icons" onclick="selectEmotion('sentiment_excited')"><svg
+                                        xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960"
+                                        width="40px" fill="#000">
+                                        <path
+                                            d="M320-480v80q0 66 47 113t113 47q66 0 113-47t47-113v-80H320Zm160 180q-42 0-71-29t-29-71v-20h200v20q0 42-29 71t-71 29ZM272.5-652.5Q243-625 231-577l58 14q6-26 20-41.5t31-15.5q17 0 31 15.5t20 41.5l58-14q-12-48-41.5-75.5T340-680q-38 0-67.5 27.5Zm280 0Q523-625 511-577l58 14q6-26 20-41.5t31-15.5q17 0 31 15.5t20 41.5l58-14q-12-48-41.5-75.5T620-680q-38 0-67.5 27.5ZM324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM480-480Zm236.33 236.33q97-97 97-236.33t-97-236.33q-97-97-236.33-97t-236.33 97q-97 97-97 236.33t97 236.33q97 97 236.33 97t236.33-97Z" />
+                                    </svg></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="right" onclick="nextSlide()"><span
+                            class="material-icons">chevron_right</span></button>
+                </div>
+                    <button onclick="backToSaida()"><span class="material-icons">arrow_back</span></button>
             </div>
         </div>
+        <div class="carta">
+            <div class="cartaSup">
+                <h2>Situação</h2>
+                <span id="icone-resultado">icon</span>
+            </div>
 
-        <div class="paleta-wrapper" id="paletaWrapper">
-            <div class="central-tunnel"></div>
-            
-            <div class="color-ring" id="colorRing">
-                <div class="color-item" style="background: #ff4757;" data-color="#ff4757"></div>
-                <div class="color-item" style="background: #ff6b81;" data-color="#ff6b81"></div>
-                <div class="color-item" style="background: #ffa502;" data-color="#ffa502"></div>
-                <div class="color-item" style="background: #ff7f50;" data-color="#ff7f50"></div>
-                <div class="color-item" style="background: #eccc68;" data-color="#eccc68"></div>
-                <div class="color-item" style="background: #2ed573;" data-color="#2ed573"></div>
-                <div class="color-item" style="background: #7bed9f;" data-color="#7bed9f"></div>
-                <div class="color-item" style="background: #00d2d3;" data-color="#00d2d3"></div>
-                <div class="color-item" style="background: #01a3a4;" data-color="#01a3a4"></div>
-                <div class="color-item" style="background: #1e90ff;" data-color="#1e90ff"></div>
-                <div class="color-item" style="background: #70a1ff;" data-color="#70a1ff"></div>
-                <div class="color-item" style="background: #5352ed;" data-color="#5352ed"></div>
-                <div class="color-item" style="background: #3742fa;" data-color="#3742fa"></div>
-                <div class="color-item" style="background: #9b59b6;" data-color="#9b59b6"></div>
-                <div class="color-item" style="background: #ff47a3;" data-color="#ff47a3"></div>
-                <div class="color-item" style="background: #dfe4ea;" data-color="#dfe4ea"></div>
-                <div class="color-item" style="background: #2f3542;" data-color="#2f3542"></div>
-                <div class="color-item" style="background: #747d8c;" data-color="#747d8c"></div>
-                <div class="color-item" style="background: #ffa502;" data-color="#ffa502"></div>
-                <div class="color-item" style="background: #ced6e0;" data-color="#ced6e0"></div>
+            <div class="cartaCen">
+                <p>Pensamento</p>
+                <h3>saida</h3>
+            </div>
+
+            <div class="cartaFoot">
+                <p class="cartaFoot-text">Atenciosamente, para minha querida psicóloga</p>
             </div>
         </div>
     </div>
-
-    <script>
-        const items = document.querySelectorAll('.color-item');
-        const colorRing = document.getElementById('colorRing');
-        const paletaWrapper = document.getElementById('paletaWrapper');
-        
-        const radius = 60;
-        const totalItems = items.length;
-
-        // Distribui as 20 cores em círculo
-        items.forEach((item, index) => {
-            const angle = (index * 2 * Math.PI) / totalItems;
-            const x = Math.cos(angle) * radius - 13;
-            const y = Math.sin(angle) * radius - 13;
-
-            item.style.left = `50%`;
-            item.style.top = `50%`;
-            item.style.transform = `translate(${x}px, ${y}px)`;
-        });
-
-        let currentRotation = 0;
-        let isInteracting = false;
-        let startX = 0;
-
-        // Início da interação (Mouse ou Toque)
-        function handleStart(clientX) {
-            isInteracting = true;
-            startX = clientX;
-        }
-
-        // Movimento (Mouse ou Toque)
-        function handleMove(clientX) {
-            if (!isInteracting) return;
-            const deltaX = clientX - startX;
-            currentRotation += deltaX * 0.6; // Sensibilidade de giro
-            startX = clientX;
-            colorRing.style.transform = `rotate(${currentRotation}deg)`;
-        }
-
-        function handleEnd() {
-            isInteracting = false;
-        }
-
-        // Eventos para Computador (Mouse)
-        paletaWrapper.addEventListener('mousedown', (e) => handleStart(e.clientX));
-        window.addEventListener('mousemove', (e) => handleMove(e.clientX));
-        window.addEventListener('mouseup', handleEnd);
-
-        // Eventos corrigidos para Celular (Touch)
-        paletaWrapper.addEventListener('touchstart', (e) => {
-            handleStart(e.touches[0].clientX);
-        }, { passive: true });
-
-        window.addEventListener('touchmove', (e) => {
-            if (!isInteracting) return;
-            handleMove(e.touches[0].clientX);
-        }, { passive: true });
-
-        window.addEventListener('touchend', handleEnd);
-
-        // Suporte a scroll/roda do mouse
-        paletaWrapper.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            currentRotation += e.deltaY * 0.2;
-            colorRing.style.transform = `rotate(${currentRotation}deg)`;
-        }, { passive: false });
-    </script>
-
+    <footer>
+        <p>&copy; 2026 Surtos & mais Company, todos os direitos reservados. | Desenvolvido por <a href="mailto:rodrigues.arthur.dev@gmail.com">Arthur Rodrigues</a></p>
+    </footer>
+    <script src="script.js"></script>
 </body>
+
 </html>

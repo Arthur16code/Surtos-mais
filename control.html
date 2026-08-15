@@ -9,15 +9,13 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Gerenciador de <strong>Surtos & mais</strong></h1>
-    </header>
+
     <menu>
         <div class="menu">
-            <button id="btn-casa" class="btn-menu">Casa<span class="material-icons">home</span></button>
-            <button id="btn-correspondencia" class="btn-menu">Correpondencia<span class="material-icons">drafts</span></button>
-            <button id="btn-arq" class="btn-menu">Arquivados<span class="material-icons">archived</span></button>
-            <button id="btn-configuracoes" class="btn-menu">Configurações<span class="material-icons">settings</span></button>
+            <button id="btn-casa" class="btn-menu"><span class="material-icons">home</span></button>
+            <button id="btn-correspondencia" class="btn-menu"><span class="material-icons">drafts</span></button>
+            <button id="btn-arq" class="btn-menu"><span class="material-icons">archived</span></button>
+            <button id="btn-configuracoes" class="btn-menu"><span class="material-icons">settings</span></button>
         </div>
     </menu>
 
@@ -59,11 +57,29 @@
                 </div>
             </div>
             
-            <div class="card extra-card"></div>
+            <div class="card extra-card">
+                <div class="header-alerta">
+                    <span class="material-icons">phone_missed</span>
+                    <span class="label-alerta">Arthur Rodrigues</span>
+                </div>
+                
+                <div class="dados-alerta">
+                    <h3 class="data-alerta">15/08/2026</h3>
+                    <p class="hora-minuto-alerta">09:42</p>
+                </div>
+
+                <div class="botao-contato">
+                <a href="https://wa.me/5581996260119" target="_blank" class="whatsapp-btn">
+                        <span class="material-icons">chat</span> Contatar Paciente
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-
+<footer>
+    <p>&copy; 2026 Surtos & mais Company, todos os direitos reservados.</p>
+    <p>Desenvolvido por <a href="mailto:rodrigues.arthur.dev@gmail.com">Arthur Rodrigues</a></p>
+</footer>
 </body>
 </html>

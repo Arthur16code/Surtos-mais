@@ -6,12 +6,13 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.material-icons {
-    height: 24px;
-    width: 24px;
+menu .material-icons {
+    height: 30px;
+    width: 30px;
 }
 
 menu {
+    margin: 0;
     background-color: #262626;
     padding: 16px;
     display: flex;
@@ -26,10 +27,11 @@ menu {
     justify-content: space-between;
     align-items: center;
     border-radius: 50px;
+    width: 100%;
 }
 
 .btn-menu {
-    background-color: #222222;
+    background-color: #252525;
     color: #fff;
     border: none;
     padding: 10px 15px;
@@ -40,24 +42,24 @@ menu {
 }
 
 #btn-casa {
-    width: 100px;
+    width: 50px;
     height: 50px;
 }
 
 #btn-correspondencia {
-    width: 180px;
+    width: 50px;
     height: 50px;
 }
 
 #btn-arq {
     display: flex;
     justify-content: space-between;
-    width: 150px;
+    width: 50px;
     height: 50px;
 }
 
 #btn-configuracoes {
-    width: 170px;
+    width: 50px;
     height: 50px;
 }
 
@@ -171,6 +173,39 @@ menu {
     opacity: 0.8;
 }
 
-.extra-card {
-    min-height: 120px;
+.dados-alerta, .header-alerta {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.whatsapp-btn {
+    background-color: #333333; /* Fundo cinza escuro padrão */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.whatsapp-btn:hover {
+    background-color: #25D366; /* Verde oficial do WhatsApp no hover */
+    color: #ffffff;            /* Mantém o texto branco para leitura perfeita */
+}
+
+footer {
+    padding: 10px;
+    text-align: center;
+    background-color: #232323;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
 }

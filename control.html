@@ -19,9 +19,9 @@
         </div>
     </menu>
 
-    <div class="home">
+<div class="home">
     <div class="welcome-banner">
-        <h2>Oi Paula, tudo bem?</h2>
+        <h2>Bem-vinda, Paula</h2>
     </div>
     
     <div class="dashboard-grid">
@@ -47,32 +47,41 @@
         </div>
         
         <div class="side-column">
-            <div class="card profile-card">
-                <div class="profile-avatar">
-                <span class="material-icons">account_circle</span>
+            <div class="patient-profile-card">
+                <div class="patient-icon-wrapper">
+                    <!-- Ícone de ID Card do Material Symbols -->
+                    <span class="material-icons" style="font-size: 32px; color: #fff;">badge</span>
                 </div>
-                <div class="profile-text">
-                    <h3>PAULA F.</h3>
-                    <p>DESDE 2026</p>
+                
+                <div class="patient-info">
+                    <h3 class="patient-name">Arthur R.</h3>
+                    <span class="patient-details">Idade: 10 anos</span>
                 </div>
             </div>
             
-            <div class="card extra-card">
-                <div class="header-alerta">
+        <div class="card extra-card">
+            <!-- Cabeçalho do Alerta / Ligação Perdida -->
+            <div class="extra-header">
+                <div class="extra-icon-wrapper">
                     <span class="material-icons">phone_missed</span>
-                    <span class="label-alerta">Arthur Rodrigues</span>
                 </div>
-                
-                <div class="dados-alerta">
-                    <h3 class="data-alerta">15/08/2026</h3>
-                    <p class="hora-minuto-alerta">09:42</p>
+                <div class="extra-title-group">
+                    <span class="extra-subtitle">Ligação Perdida</span>
+                    <h3 class="extra-title">Arthur R.</h3>
                 </div>
+            </div>
+            
+            <!-- Informações de Data e Hora -->
+            <div class="extra-info">
+                <span>Data: <strong>15/08/2026</strong></span>
+                <span>Horário: <strong>09:42</strong></span>
+            </div>
 
-                <div class="botao-contato">
+            <!-- Botão de Contato -->
+            <div class="extra-action">
                 <a href="https://wa.me/5581996260119" target="_blank" class="whatsapp-btn">
-                        <span class="material-icons">chat</span> Contatar Paciente
-                    </a>
-                </div>
+                    <span class="material-icons">phone</span> Contatar Paciente
+                </a>
             </div>
         </div>
     </div>
@@ -81,5 +90,7 @@
     <p>&copy; 2026 Surtos & mais Company, todos os direitos reservados.</p>
     <p>Desenvolvido por <a href="mailto:rodrigues.arthur.dev@gmail.com">Arthur Rodrigues</a></p>
 </footer>
+
+    <script type="module" src="control.js"></script>
 </body>
 </html>

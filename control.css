@@ -107,6 +107,7 @@ menu {
     align-items: center;
     width: 100%;
     justify-content: space-between;
+    margin: 0px;
 }
 
 .card-header .material-symbols-outlined {
@@ -114,6 +115,10 @@ menu {
     font-size: 30px;
     height: 30px;
     width: 30px;
+}
+
+.card-header h3 {
+    margin: 0px;
 }
 
 .card-list {
@@ -146,38 +151,111 @@ menu {
     gap: 20px;
 }
 
-.profile-card {
+.patient-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05); /* Ajuste conforme o tema do seu app */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 20px;
+}
+
+.patient-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.patient-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Controlando o tamanho exato via CSS para não ficar gigante */
+.patient-name {
+    margin: 0;
+    font-size: 18px; 
+    font-weight: 600;
+    color: #fff;
+}
+
+.patient-details {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.7;
+    color: #fff;
+}
+
+.card.extra-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 15px;
+}
+
+.extra-header {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-.profile-avatar .material-symbols-outlined {
-    color: #fff;
-    font-size: 40px;
-}
-
-.profile-text h3, 
-.profile-text p {
-    color: #fff;
-    margin: 0;
-}
-
-.profile-text h3 {
-    font-size: 18px;
-    letter-spacing: 1px;
-}
-
-.profile-text p {
-    font-size: 13px;
-    opacity: 0.8;
-}
-
-.dados-alerta, .header-alerta {
+.extra-icon-wrapper {
     display: flex;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.extra-icon-wrapper .material-icons {
+    font-size: 24px;
+    color: #fff;
+}
+
+.extra-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.extra-subtitle {
+    font-size: 12px;
+    opacity: 0.6;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.extra-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.extra-info {
+    display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 14px;
+    opacity: 0.8;
+    color: #fff;
+    padding: 8px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .whatsapp-btn {
@@ -188,15 +266,21 @@ menu {
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 8px;
     font-size: 14px;
     transition: background-color 0.2s, color 0.2s;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .whatsapp-btn:hover {
     background-color: #25D366; /* Verde oficial do WhatsApp no hover */
     color: #ffffff;            /* Mantém o texto branco para leitura perfeita */
+}
+
+.whatsapp-btn .material-icons {
+    font-size: 18px;
 }
 
 footer {

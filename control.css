@@ -11,6 +11,11 @@ menu .material-icons {
     width: 30px;
 }
 
+.material-icons {
+    width: 30px;
+    height: 30px;
+}
+
 menu {
     margin: 0;
     background-color: #262626;
@@ -56,6 +61,7 @@ menu {
     justify-content: space-between;
     width: 50px;
     height: 50px;
+    justify-content: center;
 }
 
 #btn-configuracoes {
@@ -282,6 +288,102 @@ menu {
 
 .whatsapp-btn .material-icons {
     font-size: 18px;
+}
+
+/* Botão principal de menu moderno (igual aos cards/botões do app) */
+.btn-principal-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #262626;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-principal-menu:hover {
+    background-color: #333333;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn-principal-menu .material-icons {
+    font-size: 20px;
+}
+
+/* Container do menu colapsável */
+.menu-container {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    width: 100vw;
+    transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out, margin 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+}
+
+/* Quando aberto, revela o menu com margem correta */
+.menu-container.aberto {
+    max-height: 100px;
+    opacity: 1;
+    margin-top: 12px;
+}
+
+/* Barra interna do menu seguindo a paleta do site */
+menu {
+    margin: 0;
+    background-color: #262626;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px; /* Mudado de pílula para combinar com os cards */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+}
+
+.menu {
+    background-color: #232323;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    width: 100%;
+    gap: 8px;
+}
+
+/* Botões internos do menu perfeitamente distribuídos */
+.btn-menu {
+    background-color: #2d2d2d;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 48px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-menu:hover {
+    background-color: #383838;
+}
+
+.btn-menu .material-icons {
+    height: 24px;
+    width: 24px;
+    font-size: 20px;
 }
 
 footer {

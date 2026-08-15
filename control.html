@@ -10,18 +10,26 @@
 </head>
 <body>
 
+<!-- Botão principal para abrir/fechar o menu -->
+<button id="btn-toggle-menu" class="btn-principal-menu" onclick="toggleMenuLateral()">
+    <span style="font-size: 40px;" class="material-icons">menu</span>
+</button>
+
+<!-- Container colapsável -->
+<div id="menuContainer" class="menu-container">
     <menu>
         <div class="menu">
             <button id="btn-casa" class="btn-menu"><span class="material-icons">home</span></button>
             <button id="btn-correspondencia" class="btn-menu"><span class="material-icons">drafts</span></button>
-            <button id="btn-arq" class="btn-menu"><span class="material-icons">archived</span></button>
+            <button id="btn-arq" class="btn-menu"><span class="material-icons">archive</span></button>
             <button id="btn-configuracoes" class="btn-menu"><span class="material-icons">settings</span></button>
         </div>
     </menu>
+</div>
 
 <div class="home">
     <div class="welcome-banner">
-        <h2>Bem-vinda, Paula</h2>
+        <h2>Ola, Paula. <br> Seja bem-vinda de volta à <span title="Gerenciamento de Crises e Surtos(G. C. S.)">GCS</span></h2>
     </div>
     
     <div class="dashboard-grid">
@@ -73,8 +81,8 @@
             
             <!-- Informações de Data e Hora -->
             <div class="extra-info">
-                <span>Data: <strong>15/08/2026</strong></span>
-                <span>Horário: <strong>09:42</strong></span>
+                <span>Data: <strong class="data-alerta">15/08/2026</strong></span>
+                <span>Horário: <strong class="hora-minuto-alerta">09:42</strong></span>
             </div>
 
             <!-- Botão de Contato -->
@@ -90,7 +98,12 @@
     <p>&copy; 2026 Surtos & mais Company, todos os direitos reservados.</p>
     <p>Desenvolvido por <a href="mailto:rodrigues.arthur.dev@gmail.com">Arthur Rodrigues</a></p>
 </footer>
-
+    <script>
+        function toggleMenuLateral() {
+    const container = document.getElementById('menuContainer');
+    container.classList.toggle('aberto');
+}
+    </script>
     <script type="module" src="control.js"></script>
 </body>
 </html>

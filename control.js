@@ -45,16 +45,14 @@ async function carregarPainel() {
 
 // 3. Atualiza o Card Extra (Última Ocorrência) usando o dataHumana
 function atualizarCardExtra(ultimoItem) {
-    if (!ultimoItem.dataHumana) return;
+    if (!ultimoItem || !ultimoItem.dataHumana) return;
 
-    // Quebra a string por espaços, gerando uma lista com os pedaços
-    const partes = ultimoItem.dataHumana.trim().split(/\s+/);
+    const texto = String(ultimoItem.dataHumana).trim();
+    const partes = texto.split(/\s+/);
     
-    // O primeiro pedaço é sempre a data (ex: 15/08/2026)
     const dataStr = partes[0] || ""; 
-    
-    // O último pedaço é sempre a hora (ex: 12:53)
-    const horaStr = partes[partes.length - 1] || ""; 
+    const matchHora = texto.match(/\d{2}:\d{2}/);
+    const horaStr = matchHora ? matchHora[0] : ""; 
 
     const elementoData = document.querySelector('.data-alerta');
     const elementoHora = document.querySelector('.hora-minuto-alerta');

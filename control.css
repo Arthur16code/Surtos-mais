@@ -1,0 +1,167 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.material-icons {
+    height: 24px;
+    width: 24px;
+}
+
+menu {
+    background-color: #262626;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-menu {
+    background-color: #222222;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+#btn-casa {
+    width: 100px;
+    height: 50px;
+}
+
+#btn-correspondencia {
+    width: 180px;
+    height: 50px;
+}
+
+#btn-arq {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    height: 50px;
+}
+
+#btn-configuracoes {
+    width: 170px;
+    height: 50px;
+}
+
+.home {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.welcome-banner {
+    border-radius: 12px;
+    padding: 20px;
+    background-color:#262626 ;
+}
+
+.welcome-banner h2 {
+    color: #fff;
+    margin: 0;
+    font-weight: 400;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    border-radius: 12px;
+    padding: 16px;
+    background-color : #262626;
+}
+
+.correspondence-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.card-header .material-symbols-outlined {
+    color: #fff;
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.list-item .material-symbols-outlined {
+    color: #fff;
+    font-size: 18px;
+}
+
+.list-item .line {
+    height: 2px;
+    background-color: #fff;
+    flex-grow: 1;
+    border-radius: 2px;
+}
+
+.side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.profile-avatar .material-symbols-outlined {
+    color: #fff;
+    font-size: 40px;
+}
+
+.profile-text h3, 
+.profile-text p {
+    color: #fff;
+    margin: 0;
+}
+
+.profile-text h3 {
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.profile-text p {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.extra-card {
+    min-height: 120px;
+}

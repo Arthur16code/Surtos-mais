@@ -143,6 +143,10 @@ h1 {
     justify-content: space-between;
 }
 
+#icone-resultado {
+    font-size: 65px;
+}
+
 .carta h2 {
     margin: 0;
 }
@@ -165,4 +169,44 @@ h1 {
 .carta .cartaFoot p{
     margin: 0;
     text-align: center;
+}
+
+.btn-psicologa {
+    /* Gradiente "Apple Style" */
+    background: linear-gradient(180deg, #70f570 0%, #32cd32 100%);
+    
+    /* Layout */
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    
+    /* Design do "ícone-botão" */
+    border: none;
+    border-radius: 18px; /* Cantos bem arredondados */
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    
+    /* Sombra para dar profundidade */
+    box-shadow: 0 4px 12px rgba(50, 205, 50, 0.4);
+    
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-psicologa:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 16px rgba(50, 205, 50, 0.6);
+}
+
+/* Ajuste fino do ícone */
+.btn-psicologa .material-icons {
+    font-size: 20px;
+}
+
+footer {
+    text-align: center;
+
 }

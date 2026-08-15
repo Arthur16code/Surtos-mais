@@ -19,6 +19,15 @@ menu {
     align-items: center;
 }
 
+.menu {
+    background-color: #232323;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 50px;
+}
+
 .btn-menu {
     background-color: #222222;
     color: #fff;

@@ -1,109 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Surtos & mais</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="control.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=drafts" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
 
-<!-- Botão principal para abrir/fechar o menu -->
-<button id="btn-toggle-menu" class="btn-principal-menu" onclick="toggleMenuLateral()">
-    <span style="font-size: 40px;" class="material-icons">menu</span>
-</button>
+    <!-- Botão principal para abrir/fechar o menu -->
+    <button id="btn-toggle-menu" class="btn-principal-menu" onclick="toggleMenuLateral()">
+        <span style="font-size: 40px;" class="material-icons">menu</span>
+    </button>
 
-<!-- Container colapsável -->
-<div id="menuContainer" class="menu-container">
-    <menu>
-        <div class="menu">
-            <button id="btn-casa" class="btn-menu"><span class="material-icons">home</span></button>
-            <button id="btn-correspondencia" class="btn-menu"><span class="material-icons">drafts</span></button>
-            <button id="btn-arq" class="btn-menu"><span class="material-icons">archive</span></button>
-            <button id="btn-configuracoes" class="btn-menu"><span class="material-icons">settings</span></button>
-        </div>
-    </menu>
-</div>
-
-<div class="home">
-    <div class="welcome-banner">
-        <h2>Ola, Paula. <br> Seja bem-vinda de volta à <span title="Gerenciamento de Crises e Surtos(G. C. S.)">GCS</span></h2>
+    <!-- Container colapsável -->
+    <div id="menuContainer" class="menu-container">
+        <menu>
+            <div class="menu">
+                <button id="btn-casa" class="btn-menu" onclick="voltarHome()"><span
+                        class="material-icons">home</span></button>
+                <button id="btn-correspondencia" class="btn-menu" onclick="casa()"><span
+                        class="material-icons">drafts</span></button>
+                <button id="btn-arq" class="btn-menu"><span class="material-icons">archive</span></button>
+                <button id="btn-configuracoes" class="btn-menu"><span class="material-icons">settings</span></button>
+            </div>
+        </menu>
     </div>
-    
-    <div class="dashboard-grid">
-        <div class="card correspondence-card">
-            <div class="card-header">
-                <span class="material-icons">drafts</span>
-                <h3>Correspondências</h3>
-            </div>
-            <div class="card-list">
-                <div class="list-item">
-                    <span class="material-icons">radio_button_unchecked</span>
-                    <div class="line"></div>
-                </div>
-                <div class="list-item">
-                    <span class="material-icons">radio_button_unchecked</span>
-                    <div class="line"></div>
-                </div>
-                <div class="list-item">
-                    <span class="material-icons">radio_button_unchecked</span>
-                    <div class="line"></div>
-                </div>
-            </div>
+    <br>
+
+    <div class="home">
+        <div class="welcome-banner">
+            <h2>Ola, Paula. <br> Seja bem-vinda de volta à <span
+                    title="Gerenciamento de Crises e Surtos(G. C. S.)">GCS</span></h2>
         </div>
-        
-        <div class="side-column">
-            <div class="patient-profile-card">
-                <div class="patient-icon-wrapper">
-                    <!-- Ícone de ID Card do Material Symbols -->
-                    <span class="material-icons" style="font-size: 32px; color: #fff;">badge</span>
+
+        <div class="dashboard-grid">
+            <div class="card correspondence-card">
+                <div class="card-header">
+                    <span class="material-icons">drafts</span>
+                    <h3>Correspondências</h3>
                 </div>
-                
-                <div class="patient-info">
-                    <h3 class="patient-name">Arthur R.</h3>
-                    <span class="patient-details">Idade: 10 anos</span>
+                <div class="card-list">
+                    <div class="list-item">
+                        <span class="material-icons">radio_button_unchecked</span>
+                        <div class="line"></div>
+                    </div>
+                    <div class="list-item">
+                        <span class="material-icons">radio_button_unchecked</span>
+                        <div class="line"></div>
+                    </div>
+                    <div class="list-item">
+                        <span class="material-icons">radio_button_unchecked</span>
+                        <div class="line"></div>
+                    </div>
                 </div>
-            </div>
-            
-        <div class="card extra-card">
-            <!-- Cabeçalho do Alerta / Ligação Perdida -->
-            <div class="extra-header">
-                <div class="extra-icon-wrapper">
-                    <span class="material-icons">phone_missed</span>
-                </div>
-                <div class="extra-title-group">
-                    <span class="extra-subtitle">Ligação Perdida</span>
-                    <h3 class="extra-title">Arthur R.</h3>
-                </div>
-            </div>
-            
-            <!-- Informações de Data e Hora -->
-            <div class="extra-info">
-                <span>Data: <strong class="data-alerta">15/08/2026</strong></span>
-                <span>Horário: <strong class="hora-minuto-alerta">09:42</strong></span>
             </div>
 
-            <!-- Botão de Contato -->
-            <div class="extra-action">
-                <a href="https://wa.me/5581996260119" target="_blank" class="whatsapp-btn">
-                    <span class="material-icons">phone</span> Contatar Paciente
-                </a>
+            <div class="side-column">
+                <div class="patient-profile-card">
+                    <div class="patient-icon-wrapper">
+                        <!-- Ícone de ID Card do Material Symbols -->
+                        <span class="material-icons" style="font-size: 32px; color: #fff;">badge</span>
+                    </div>
+
+                    <div class="patient-info">
+                        <h3 class="patient-name">Arthur R.</h3>
+                        <span class="patient-details">Idade: 10 anos</span>
+                    </div>
+                </div>
+
+                <div class="card extra-card">
+                    <!-- Cabeçalho do Alerta / Ligação Perdida -->
+                    <div class="extra-header">
+                        <div class="extra-icon-wrapper">
+                            <span class="material-icons">phone_missed</span>
+                        </div>
+                        <div class="extra-title-group">
+                            <span class="extra-subtitle">Ligação Perdida</span>
+                            <h3 class="extra-title">Arthur R.</h3>
+                        </div>
+                    </div>
+
+                    <!-- Informações de Data e Hora -->
+                    <div class="extra-info">
+                        <span>Data: <strong class="data-alerta">15/08/2026</strong></span>
+                        <span>Horário: <strong class="hora-minuto-alerta">09:42</strong></span>
+                    </div>
+
+                    <!-- Botão de Contato -->
+                    <div class="extra-action">
+                        <a href="https://wa.me/5581996260119" target="_blank" class="whatsapp-btn">
+                            <span class="material-icons">phone</span> Contatar Paciente
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<footer>
-    <p>&copy; 2026 Surtos & mais Company, todos os direitos reservados.</p>
-    <p>Desenvolvido por <a href="mailto:rodrigues.arthur.dev@gmail.com">Arthur Rodrigues</a></p>
-</footer>
-    <script>
-        function toggleMenuLateral() {
-    const container = document.getElementById('menuContainer');
-    container.classList.toggle('aberto');
-}
-    </script>
+    <div class="correspondencia">
+        <h2>Correspondecia</h2>
+        <div class="notification-container">
+            <div class="notification-card">
+                <div class="notification-header">
+                    <span class="notification-dot"></span>
+                    <div class="notification-text">
+                        <h4 class="notification-title">Título da Notificação</h4>
+                        <p class="notification-subtitle">Este é o subtitulo com uma breve descrição.</p>
+                    </div>
+                </div>
+
+                <div class="notification-content">
+                    <div class="notification-content-inner">
+                        <div class="empty-box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Surtos & mais Company, todos os direitos reservados.</p>
+        <p>Desenvolvido por <a href="mailto:rodrigues.arthur.dev@gmail.com">Arthur Rodrigues</a></p>
+    </footer>
+    <script src="control2.js"></script>
     <script type="module" src="control.js"></script>
 </body>
+
 </html>

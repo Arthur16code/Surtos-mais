@@ -10,6 +10,22 @@ body{ /*linha 78 css*/
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Prevent mobile browsers from selecting UI text or showing the blue tap overlay. */
+.app-ui,
+.app-ui * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Preserve normal selection for any form fields added to this page. */
+.app-ui input,
+.app-ui textarea {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
 /*start of home*/
 
 menu .material-icons {

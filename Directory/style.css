@@ -1,0 +1,82 @@
+:root {
+    color-scheme: dark;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #1a1a1a;
+    color: #f5f5f5;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background: #1a1a1a;
+}
+
+.diretorio {
+    width: min(100% - 48px, 720px);
+    margin: 0 auto;
+    padding: 48px 0 28px;
+}
+
+.cabecalho { margin-bottom: 28px; }
+
+.nome-marca {
+    margin: 0 0 20px;
+    color: #a6dca6;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+h1 { margin-bottom: 8px; font-size: 2rem; font-weight: 500; }
+
+.introducao {
+    margin-bottom: 0;
+    color: #bdbdbd;
+    line-height: 1.5;
+}
+
+.lista-de-paginas { display: grid; gap: 12px; }
+.lista-de-paginas h2 { margin: 0 0 4px; font-size: .9rem; font-weight: 500; color: #bdbdbd; }
+
+.cartao-pagina {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 12px;
+    background: #262626;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color .2s ease;
+}
+
+.cartao-pagina:hover { background: #303030; }
+.cartao-pagina:focus-visible { outline: 2px solid #a6dca6; outline-offset: 3px; }
+
+.conteudo-cartao h3 { margin-bottom: 5px; font-size: 1rem; font-weight: 600; }
+.conteudo-cartao p { margin-bottom: 0; color: #bdbdbd; font-size: .92rem; line-height: 1.45; }
+
+.seta { color: #a6dca6; font-size: 1.25rem; }
+
+footer {
+    width: 100%;
+    margin-top: 32px;
+    padding: 20px 16px;
+    background-color: #262626;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #a8a8a8;
+    font-size: 13px;
+    text-align: center;
+}
+
+@media (max-width: 560px) {
+    .diretorio { width: min(100% - 32px, 720px); padding-top: 32px; }
+}

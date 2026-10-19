@@ -39,9 +39,9 @@ async function carregarPainel() {
             const registrosInvertidos = [...registros].reverse().slice(0, 3);
             renderizarCorrespondencias(registrosInvertidos);
 
-            const registrosCor = [...registros].reverse();
+            // A área de Correspondência exibe apenas as 5 notificações mais recentes.
+            const registrosCor = [...registros].reverse().slice(0, 5);
             renderizarNotif(registrosCor);
-            console.log(registrosCor);
         }
 
         console.log(registros);

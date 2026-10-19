@@ -1,7 +1,18 @@
 function toggleMenuLateral() {
     var container = document.getElementById('menuContainer');
-    if (container) {
-        container.classList.toggle('aberto');
+    var toggleButton = document.getElementById('btn-toggle-menu');
+
+    if (container && toggleButton) {
+        var isOpen = container.classList.toggle('aberto');
+        toggleButton.setAttribute('aria-expanded', String(isOpen));
+
+        // Reapply the feedback on every tap, including quick repeated taps.
+        toggleButton.classList.remove('menu-button-pressed');
+        void toggleButton.offsetWidth;
+        toggleButton.classList.add('menu-button-pressed');
+        window.setTimeout(function () {
+            toggleButton.classList.remove('menu-button-pressed');
+        }, isOpen ? 400 : 200);
     }
 }
 
@@ -17,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fechar menu quando selecionar um item
   var menuButtons = document.querySelectorAll('.btn-menu');
   var menuContainer = document.getElementById('menuContainer');
+  var toggleButton = document.getElementById('btn-toggle-menu');
   
   menuButtons.forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -24,6 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
         menuContainer.classList.remove('aberto');
       }
     });
+  });
+
+  // Close the menu when the user taps or clicks anywhere outside of it.
+  document.addEventListener('pointerdown', function(event) {
+    if (!menuContainer || !menuContainer.classList.contains('aberto')) return;
+
+    var clickedInsideMenu = menuContainer.contains(event.target);
+    var clickedToggleButton = toggleButton && toggleButton.contains(event.target);
+
+    if (!clickedInsideMenu && !clickedToggleButton) {
+      menuContainer.classList.remove('aberto');
+      if (toggleButton) toggleButton.setAttribute('aria-expanded', 'false');
+    }
   });
 });
 

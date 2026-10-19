@@ -15,8 +15,8 @@
 <body>
 
     <!-- Botão principal para abrir/fechar o menu -->
-    <button id="btn-toggle-menu" class="btn-principal-menu" onclick="toggleMenuLateral()">
-        <span style="font-size: 40px;" class="material-icons">menu</span>
+    <button id="btn-toggle-menu" class="btn-principal-menu" type="button" aria-expanded="false" aria-controls="menuContainer" onclick="toggleMenuLateral()">
+        <span style="font-size: 30px;" class="material-icons">menu</span>
     </button>
 
     <!-- Container colapsável -->
@@ -105,23 +105,7 @@
     </div>
     <div class="correspondencia">
         <h2>Correspondecia</h2>
-        <div class="notification-container">
-            <div class="notification-card">
-                <div class="notification-header">
-                    <span class="notification-dot"></span>
-                    <div class="notification-text">
-                        <h4 class="notification-title">Título da Notificação</h4>
-                        <p class="notification-subtitle">Este é o subtitulo com uma breve descrição.</p>
-                    </div>
-                </div>
-
-                <div class="notification-content">
-                    <div class="notification-content-inner">
-                        <div class="empty-box"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="notification-container" aria-live="polite"></div>
     </div>
 
     <footer>

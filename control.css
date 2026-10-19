@@ -18,16 +18,6 @@ menu .material-icons {
     height: 30px;
 }
 
-.menu {
-    background-color: #232323;
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 50px;
-    width: 100%;
-}
-
 .btn-menu {
     background-color: #252525;
     color: #fff;
@@ -322,6 +312,12 @@ menu .material-icons {
     border-color: rgba(255, 255, 255, 0.15);
 }
 
+/* Brief tap feedback for touch devices, matching the hover appearance. */
+.btn-principal-menu.menu-button-pressed {
+    background-color: #333333;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
 .btn-principal-menu .material-icons {
     font-size: 20px;
 }
@@ -337,6 +333,7 @@ menu .material-icons {
     opacity: 0;
     width: auto;
     display: flex;
+    height: 60px;
     justify-content: flex-start;
     transform: translateX(-20px);
     transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
@@ -364,7 +361,7 @@ menu {
 }
 
 .menu {
-    background-color: #232323;
+
     padding: 8px;
     display: flex;
     justify-content: space-between;

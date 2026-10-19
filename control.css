@@ -6,6 +6,10 @@ body{ /*linha 78 css*/
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /*start of home*/
 
 menu .material-icons {

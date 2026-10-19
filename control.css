@@ -400,44 +400,50 @@ menu {
 
 /*start of correspondecia*/
 
-.correspondencia h2 {
-    margin: 0px;
-    text-align: center;
-}
-
 .notification-container {
   width: 100%;
-  max-width: 100%;
+  max-width: 720px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .notification-card {
-  margin: 0px 3vw;
-  width: 97vw;
-  max-width: 97%;
+  margin: 0;
+  width: 100%;
+  max-width: none;
   background: #ffffff;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
-  border: 1px solid #e1e4e8;
+  border: 1px solid rgba(255, 255, 255, 0.7);
   box-sizing: border-box;
 }
 
 .notification-card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
 }
 
 .notification-header {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+/* Shows that a notification can be opened; it points down when expanded. */
+.notification-toggle-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: #6b7280;
+  font-size: 24px;
+  transition: transform 0.25s ease;
 }
 
 .notification-emoji {
@@ -562,6 +568,10 @@ menu {
 .notification-card.expanded .notification-content {
   grid-template-rows: 1fr;
   margin-top: 12px;
+}
+
+.notification-card.expanded .notification-toggle-icon {
+  transform: rotate(90deg);
 }
 
 /*end of correpondecia*/

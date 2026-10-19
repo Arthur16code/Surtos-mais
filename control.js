@@ -153,6 +153,26 @@ function formatarEmocao(emocao) {
     return mapa[emocao] || 'Neutro';
 }
 
+// Mantém a data original, exceto para registros de hoje e de ontem.
+function formatarDataRecente(dataHumana) {
+    const texto = String(dataHumana || '').trim();
+    const partes = texto.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+
+    if (!partes) return texto || 'Sem data';
+
+    const [, dia, mes, ano] = partes;
+    const dataRegistro = new Date(Number(ano), Number(mes) - 1, Number(dia));
+    const agora = new Date();
+    const hoje = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate());
+    const diaRegistro = new Date(dataRegistro.getFullYear(), dataRegistro.getMonth(), dataRegistro.getDate());
+    const diasAtras = Math.round((hoje - diaRegistro) / 86400000);
+
+    if (diasAtras === 0) return 'Hoje';
+    if (diasAtras === 1) return 'Ontem';
+
+    return texto;
+}
+
 function renderizarNotif(lista) {
     const container = document.querySelector('.notification-container');
     if (!container) return;
@@ -164,7 +184,7 @@ function renderizarNotif(lista) {
     lista.forEach((item) => {
         const situacao = String(item?.situacao || 'Ocorrência').trim() || 'Ocorrência';
         const pensamento = String(item?.pensamento || 'Sem descrição').trim() || 'Sem descrição';
-        const data = item?.dataHumana || 'Sem data';
+        const data = formatarDataRecente(item?.dataHumana);
         const emocao = item?.emocao || 'sentiment_neutral';
         const emocaoFormatada = formatarEmocao(emocao);
 
@@ -187,7 +207,7 @@ function renderizarNotif(lista) {
             <div class="notification-content">
                 <div class="notification-content-inner">
                     <div class="notification-attributes">
-                        <span>Data: <strong>${data}</strong></span>
+                        <span>Dia: <strong>${data}</strong></span>
                         <span>Emoção: <strong>${emocaoFormatada}</strong></span>
                     </div>
                     <p class="notification-message">${pensamento}</p>

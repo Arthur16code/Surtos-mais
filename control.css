@@ -50,7 +50,7 @@ menu .material-icons {
 }
 
 #btn-casa {
-    width: 50px;
+    width: 100%;
     height: 50px;
 }
 
@@ -231,7 +231,7 @@ menu .material-icons {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 48px;
+    width: 48px;
     height: 48px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -240,6 +240,9 @@ menu .material-icons {
 .extra-icon-wrapper .material-icons {
     font-size: 24px;
     color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .extra-title-group {
@@ -277,19 +280,26 @@ menu .material-icons {
 }
 
 .whatsapp-btn {
+    height: 55px;
     background-color: #333333; /* Fundo cinza escuro padrão */
     color: #ffffff;
     text-decoration: none;
-    padding: 12px;
+    padding: 8px;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    gap: 1px;
     font-size: 14px;
     transition: background-color 0.2s, color 0.2s;
     box-sizing: border-box;
     width: 100%;
+}
+
+#phone-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .whatsapp-btn:hover {
@@ -371,7 +381,7 @@ menu .material-icons {
 menu {
     margin: 0;
     background-color: #262626;
-    padding: 12px;
+    padding: 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -381,7 +391,6 @@ menu {
 }
 
 .menu {
-
     padding: 8px;
     display: flex;
     justify-content: space-between;
@@ -405,6 +414,7 @@ menu {
     height: 48px;
     cursor: pointer;
     transition: background-color 0.2s;
+    width: 100%;
 }
 
 .btn-menu:hover {
@@ -412,9 +422,9 @@ menu {
 }
 
 .btn-menu .material-icons {
-    height: 24px;
-    width: 24px;
-    font-size: 20px;
+height: 25px;
+    width: 25px;
+    font-size: 25px;
 }
 /*end of home*/
 
